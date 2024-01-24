@@ -19,7 +19,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -41,7 +42,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/forest_road_aerial_view_198687_2048x1152.jpg'),
+            image: AssetImage(
+                'assets/images/forest_road_aerial_view_198687_2048x1152.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -85,26 +87,39 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                             icon: Icon(Icons.local_gas_station),
                           ),
                         ],
-                        labelColor: Colors.blue[900], // Set the color for the active tab text
-                        unselectedLabelColor: Colors.grey[500], // Set the color for inactive tab text
+                        labelColor: Colors
+                            .blue[900], // Set the color for the active tab text
+                        unselectedLabelColor: Colors
+                            .grey[500], // Set the color for inactive tab text
                         // indicator: BoxDecoration(
                         //   color: Colors.grey[300]!, // Set the color for inactive tab background
                         //   borderRadius: BorderRadius.circular(10.0), // Add rounded corners to the indicator
                         // ),
                       ),
-                      Expanded(
-                        child: TabBarView(
-                          controller: _tabController,
-                          children: const [
-                            // Distance Tab Content
-                            Center(
-                              child: Text('Distance Tab Content'),
+                      // Distance Tab Content
+                      Center(
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                                16.0, 16.0, 16.0, 16.0),
+                            child: Form(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  buildLabeledTextField(
+                                      label: 'Starting Point'),
+                                  buildLabeledTextField(label: 'Destination'),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      // Handle form submission
+                                    },
+                                    child: Text('Calculate Distance'),
+                                  ),
+                                ],
+                              ),
                             ),
-                            // Fuel Tab Content
-                            Center(
-                              child: Text('Fuel Tab Content'),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ],
@@ -117,4 +132,23 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
     );
   }
+}
+
+Widget buildLabeledTextField({required String label}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+      const SizedBox(height: 8.0),
+      SizedBox(
+        height: 40.0, // Set the desired height here
+        child: TextFormField(
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+          // Add any necessary validation or controller properties
+        ),
+      ),
+    ],
+  );
 }
