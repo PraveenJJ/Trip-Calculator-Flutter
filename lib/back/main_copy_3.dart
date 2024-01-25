@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Variable Height Tabs',
+      title: 'Trip Calculator',
       home: MyHomePage(),
     );
   }
