@@ -108,13 +108,16 @@ class _MyHomePageState extends State<MyHomePage>
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   buildLabeledTextField(
-                                      label: 'Starting Point'),
-                                  buildLabeledTextField(label: 'Destination'),
+                                      label: 'Enter amount spent on Fuel (Rs.)'),
+                                  buildLabeledTextField(label: 'Enter current reading of Odometer'),
+                                  buildLabeledTextField(
+                                      label: 'Enter fuel price (Rs.)'),
+                                  buildLabeledTextField(label: "Enter vehicle's mileage (kms/ltr)"),
                                   ElevatedButton(
                                     onPressed: () {
                                       // Handle form submission
                                     },
-                                    child: Text('Calculate Distance'),
+                                    child: const Text('Calculate Distance'),
                                   ),
                                 ],
                               ),
@@ -138,8 +141,8 @@ Widget buildLabeledTextField({required String label}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
-      const SizedBox(height: 8.0),
+      Text(label, style: const TextStyle(fontWeight: FontWeight.normal)),
+      const SizedBox(height: 10.0),
       SizedBox(
         height: 40.0, // Set the desired height here
         child: TextFormField(
@@ -149,6 +152,7 @@ Widget buildLabeledTextField({required String label}) {
           // Add any necessary validation or controller properties
         ),
       ),
+      const SizedBox(height: 15.0),
     ],
   );
 }
