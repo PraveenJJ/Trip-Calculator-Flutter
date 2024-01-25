@@ -91,10 +91,6 @@ class _MyHomePageState extends State<MyHomePage>
                             .blue[900], // Set the color for the active tab text
                         unselectedLabelColor: Colors
                             .grey[500], // Set the color for inactive tab text
-                        // indicator: BoxDecoration(
-                        //   color: Colors.grey[300]!, // Set the color for inactive tab background
-                        //   borderRadius: BorderRadius.circular(10.0), // Add rounded corners to the indicator
-                        // ),
                       ),
                       Expanded(
                         child: TabBarView(

@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage>
                           color: Colors.white,
                           child: TabBar(
                             controller: _tabController,
-                            labelColor: Colors.redAccent,
+                            labelColor: Colors.blue[900],
                             tabs: const [
                               Tab(
                                 text: 'Distance',
@@ -108,6 +108,8 @@ class _MyHomePageState extends State<MyHomePage>
                                 icon: Icon(Icons.local_gas_station),
                               ),
                             ],
+                            unselectedLabelColor: Colors
+                                .grey[500],
                           ),
                         ),
                         Center(
@@ -151,8 +153,7 @@ class _MyHomePageState extends State<MyHomePage>
                                                 Radius.circular(5)),
                                           ),
                                         ),
-                                        child: const Text(
-                                            'CALCULATE DISTANCE',
+                                        child: const Text('CALCULATE DISTANCE',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
                                                 color: Colors.white)),
@@ -196,8 +197,7 @@ class _MyHomePageState extends State<MyHomePage>
                                                 Radius.circular(5)),
                                           ),
                                         ),
-                                        child: const Text(
-                                            'CALCULATE FUEL COST',
+                                        child: const Text('CALCULATE FUEL COST',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
                                                 color: Colors.white)),
