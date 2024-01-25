@@ -92,9 +92,20 @@ class _MyHomePageState extends State<MyHomePage>
                               ),
                             ),
                           ),
-                        ), // use for trip calculator heading
+                        ),
+
+                        // Tab bar code - Distance, Fuel
                         Container(
-                          color: Colors.white,
+                          decoration: const BoxDecoration(
+                            color: Colors
+                                .white, // Background color of the container
+                            borderRadius: BorderRadius.only(
+                              topLeft:
+                                  Radius.circular(10), // Top left corner radius
+                              topRight: Radius.circular(
+                                  10), // Top right corner radius
+                            ),
+                          ),
                           child: TabBar(
                             controller: _tabController,
                             labelColor: Colors.blue[900],
@@ -108,18 +119,27 @@ class _MyHomePageState extends State<MyHomePage>
                                 icon: Icon(Icons.local_gas_station),
                               ),
                             ],
-                            unselectedLabelColor: Colors
-                                .grey[500],
+                            unselectedLabelColor: Colors.grey[500],
                           ),
                         ),
+
+                        // Tab bar view code - Distance, Fuel
                         Center(
                           child: [
-                            // Content for Tab 1
+                            // Container for Distance form
                             Container(
-                              color: Colors
-                                  .white, // Background color of the container
+                              decoration: const BoxDecoration(
+                                color: Colors
+                                    .white, // Background color of the container
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(
+                                      10), // Top left corner radius
+                                  bottomRight: Radius.circular(
+                                      10), // Top right corner radius
+                                ),
+                              ), // Background color of the container
                               padding: const EdgeInsets.fromLTRB(
-                                  15.0, 15.0, 15.0, 10.0),
+                                  15.0, 15.0, 15.0, 15.0),
                               child: Form(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -163,11 +183,20 @@ class _MyHomePageState extends State<MyHomePage>
                                 ),
                               ),
                             ),
-                            // Content for Tab 2
+                            // Container for Fuel form
                             Container(
-                              color: Colors.white,
+                              decoration: const BoxDecoration(
+                                color: Colors
+                                    .white, // Background color of the container
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(
+                                      10), // Top left corner radius
+                                  bottomRight: Radius.circular(
+                                      10), // Top right corner radius
+                                ),
+                              ),
                               padding: const EdgeInsets.fromLTRB(
-                                  15.0, 15.0, 15.0, 10.0),
+                                  15.0, 15.0, 15.0, 15.0),
                               child: Form(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
