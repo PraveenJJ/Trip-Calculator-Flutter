@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 
 void main() {
   runApp(MyApp());
@@ -179,10 +180,69 @@ class _MyHomePageState extends State<MyHomePage>
                                                 color: Colors.white)),
                                       ),
                                     ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0.0, 15.0, 0.0, 0.0),
+                                              child: const Text(
+                                                  'Final Odometer',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 16)),
+                                            ),
+                                            const AnimatedFlipCounter(
+                                              value: 0000,
+                                              duration: Duration(seconds: 2),
+                                              curve: Curves.elasticOut,
+                                              textStyle: TextStyle(
+                                                  fontSize: 40,
+                                                  color: Colors.black),
+                                            )
+                                          ],
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      70.0, 15.0, 0.0, 0.0),
+                                              child: const Text('Distance',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 16)),
+                                            ),
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      70.0, 0.0, 0.0, 0.0),
+                                              child: const AnimatedFlipCounter(
+                                                value: 00,
+                                                duration: Duration(seconds: 2),
+                                                curve: Curves.elasticOut,
+                                                textStyle: TextStyle(
+                                                    fontSize: 40,
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
+
                             // Container for Fuel form
                             Container(
                               decoration: const BoxDecoration(
@@ -231,6 +291,28 @@ class _MyHomePageState extends State<MyHomePage>
                                                 fontWeight: FontWeight.w400,
                                                 color: Colors.white)),
                                       ),
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0.0, 15.0, 0.0, 0.0),
+                                          child: const Text('Fuel Cost',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16)),
+                                        ),
+                                        const AnimatedFlipCounter(
+                                          value: 0,
+                                          duration: Duration(seconds: 2),
+                                          curve: Curves.elasticOut,
+                                          textStyle: TextStyle(
+                                              fontSize: 40,
+                                              color: Colors.black),
+                                        )
+                                      ],
                                     ),
                                   ],
                                 ),
