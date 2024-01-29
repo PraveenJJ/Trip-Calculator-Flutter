@@ -1,4 +1,4 @@
-# flutter_application_1
+# Trip Calculator App using Flutter
 
 A new Flutter project.
 
