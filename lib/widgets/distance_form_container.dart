@@ -9,8 +9,8 @@ class DistanceFormContainer extends StatefulWidget {
 
 class DistanceFormContainerState  extends State<DistanceFormContainer> {
 
-  final TextEditingController _amountSpentController = TextEditingController(text: '100');
-  final TextEditingController _currentOdometerController = TextEditingController(text: '8100');
+  final TextEditingController _amountSpentController = TextEditingController();
+  final TextEditingController _currentOdometerController = TextEditingController();
   final TextEditingController _fuelPriceController = TextEditingController(text: '101.95');
   final TextEditingController _mileageController = TextEditingController(text: '45');
 
@@ -61,6 +61,7 @@ class DistanceFormContainerState  extends State<DistanceFormContainer> {
                   child: TextFormField(
                     controller: _amountSpentController,
                     keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                    textAlignVertical: TextAlignVertical.top,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                     ),
@@ -80,6 +81,7 @@ class DistanceFormContainerState  extends State<DistanceFormContainer> {
                   child: TextFormField(
                     controller: _currentOdometerController,
                     keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                    textAlignVertical: TextAlignVertical.top,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                     ),
@@ -99,6 +101,7 @@ class DistanceFormContainerState  extends State<DistanceFormContainer> {
                   child: TextFormField(
                     controller: _fuelPriceController,
                     keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                    textAlignVertical: TextAlignVertical.top,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                     ),
@@ -118,6 +121,7 @@ class DistanceFormContainerState  extends State<DistanceFormContainer> {
                   child: TextFormField(
                     controller: _mileageController,
                     keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                    textAlignVertical: TextAlignVertical.top,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                     ),

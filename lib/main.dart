@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Variable Height Tabs',
+      title: 'Trip Calculator',
       home: MyHomePage(),
     );
   }
@@ -80,7 +80,7 @@ class MyHomePageState extends State<MyHomePage>
                             const DistanceFormContainer(),
 
                             // Container for Fuel form
-                            const FuelFormContainer(),
+                            FuelFormContainer(),
                           ][_tabController.index],
                         ),
                       ],

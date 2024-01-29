@@ -7,7 +7,7 @@ class TripCalculatorTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 5.0),
+        padding: EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 10.0),
         child: Text(
           'Trip Calculator',
           style: TextStyle(
