@@ -73,7 +73,7 @@ class MyHomePageState extends State<MyHomePage>
                         Center(
                           child: [
                             // Container for Distance form
-                            const DistanceFormContainer(),
+                            DistanceFormContainer(),
 
                             // Container for Fuel form
                             const FuelFormContainer(),
@@ -167,8 +167,43 @@ class TabBarContainer extends StatelessWidget {
   }
 }
 
-class DistanceFormContainer extends StatelessWidget {
+class DistanceFormContainer extends StatefulWidget {
   const DistanceFormContainer({Key? key}) : super(key: key);
+  @override
+  DistanceFormContainerState createState() => DistanceFormContainerState();
+}
+
+class DistanceFormContainerState  extends State<DistanceFormContainer> {
+
+  final TextEditingController _amountSpentController = TextEditingController();
+  final TextEditingController _currentOdometerController = TextEditingController();
+  final TextEditingController _fuelPriceController = TextEditingController();
+  final TextEditingController _mileageController = TextEditingController();
+
+  double drivableKmsValue = 0;
+  double finalOdometerValue = 0;
+
+  Future<void> _calculateDistance() async {
+    double amountSpent = double.parse(_amountSpentController.text);
+    double currentOdometer = double.parse(_currentOdometerController.text);
+    double fuelPrice = double.parse(_fuelPriceController.text);
+    double mileage = double.parse(_mileageController.text);
+
+    double drivableKms = ((amountSpent / fuelPrice) * mileage).roundToDouble();
+    double finalOdometer = currentOdometer + drivableKms;
+
+    print('Driveable Kms --> $drivableKms');
+    print('Final Odometer Kms --> $finalOdometer');
+
+    setState(
+        () {
+          drivableKmsValue = drivableKms;
+          finalOdometerValue = finalOdometer;
+        }
+    );
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -186,16 +221,89 @@ class DistanceFormContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            buildLabeledTextField(label: 'Enter amount spent on Fuel (Rs.)'),
-            buildLabeledTextField(label: 'Enter current reading of Odometer'),
-            buildLabeledTextField(label: 'Enter fuel price (Rs.)'),
-            buildLabeledTextField(label: "Enter vehicle's mileage (kms/ltr)"),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Enter amount spent on Fuel (Rs.)', style: TextStyle(fontWeight: FontWeight.normal)),
+                const SizedBox(height: 5.0),
+                SizedBox(
+                  height: 35.0, // Set the desired height here
+                  child: TextFormField(
+                    controller: _amountSpentController,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    // Add any necessary validation or controller properties
+                  ),
+                ),
+                const SizedBox(height: 15.0),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Enter current reading of Odometer', style: TextStyle(fontWeight: FontWeight.normal)),
+                const SizedBox(height: 5.0),
+                SizedBox(
+                  height: 35.0, // Set the desired height here
+                  child: TextFormField(
+                    controller: _currentOdometerController,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    // Add any necessary validation or controller properties
+                  ),
+                ),
+                const SizedBox(height: 15.0),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Enter fuel price (Rs.)', style: TextStyle(fontWeight: FontWeight.normal)),
+                const SizedBox(height: 5.0),
+                SizedBox(
+                  height: 35.0, // Set the desired height here
+                  child: TextFormField(
+                    controller: _fuelPriceController,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    // Add any necessary validation or controller properties
+                  ),
+                ),
+                const SizedBox(height: 15.0),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Enter vehicle\'s mileage (kms/ltr)', style: TextStyle(fontWeight: FontWeight.normal)),
+                const SizedBox(height: 5.0),
+                SizedBox(
+                  height: 35.0, // Set the desired height here
+                  child: TextFormField(
+                    controller: _mileageController,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    // Add any necessary validation or controller properties
+                  ),
+                ),
+                const SizedBox(height: 15.0),
+              ],
+            ),
             Container(
               padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
               height: 50.0,
               child: ElevatedButton(
                 onPressed: () {
                   // Handle form submission
+                  _calculateDistance();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue[900],
@@ -223,11 +331,11 @@ class DistanceFormContainer extends StatelessWidget {
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
-                    const AnimatedFlipCounter(
-                      value: 0,
-                      duration: Duration(seconds: 2),
+                    AnimatedFlipCounter(
+                      value: finalOdometerValue,
+                      duration: const Duration(seconds: 2),
                       curve: Curves.elasticOut,
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                      textStyle: const TextStyle(fontSize: 40, color: Colors.black),
                     )
                   ],
                 ),
@@ -244,11 +352,11 @@ class DistanceFormContainer extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.fromLTRB(70.0, 0.0, 0.0, 0.0),
-                      child: const AnimatedFlipCounter(
-                        value: 0,
-                        duration: Duration(seconds: 2),
+                      child: AnimatedFlipCounter(
+                        value: drivableKmsValue,
+                        duration: const Duration(seconds: 2),
                         curve: Curves.elasticOut,
-                        textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                        textStyle: const TextStyle(fontSize: 40, color: Colors.black),
                       ),
                     ),
                   ],
